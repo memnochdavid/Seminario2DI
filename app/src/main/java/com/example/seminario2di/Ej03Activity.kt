@@ -1,17 +1,22 @@
 package com.example.seminario2di
 
-import android.content.Intent
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 //
-import android.util.Log
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class Ej03Activity : AppCompatActivity() {
+    private lateinit var semaforo: ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -22,9 +27,19 @@ class Ej03Activity : AppCompatActivity() {
             insets
         }
 
+        semaforo = findViewById(R.id.sem)
+
+        lifecycleScope.launch {
+            repeat(15) {//15 veces
+                cambia_color(R.drawable.semverde, 2000,) // verde
+                cambia_color(R.drawable.semrojo, 2000,)  // rojo
+                cambia_color(R.drawable.semambar, 1000,) // ambar
+            }
+        }
+
+
+/*
         var semaforo=findViewById<ImageView>(R.id.sem)
-        var cont_verde_rojo:Long=2
-        var cont_amarillo:Long=1
         var stop=false
         var cont=5
 
@@ -36,19 +51,23 @@ class Ej03Activity : AppCompatActivity() {
                     }
                 }
             }
-
             cont--
             if(cont==0){
                 stop=true
             }
-
-
         }
-
+*/
 
     }
 
 
+    private suspend fun cambia_color(drawable: Int, temp: Long) {
+        withContext(Dispatchers.Main) {
+            semaforo.setImageResource(drawable)
+        }
+        delay(temp)
+    }
+/*
     fun rojo(tiempo:Long,semaforo:ImageView):Boolean{
         var temp=tiempo
         var devuelve=false
@@ -97,6 +116,6 @@ class Ej03Activity : AppCompatActivity() {
         return devuelve
     }
 
-
+*/
 
 }

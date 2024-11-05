@@ -49,4 +49,6 @@ dependencies {
     //para el gif - Glide()
     implementation("com.github.bumptech.glide:glide:4.15.1")
     annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")
+    //launch
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
 }
