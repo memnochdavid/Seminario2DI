@@ -28,20 +28,15 @@ class MainActivity : AppCompatActivity() {
             val intent= Intent(this@MainActivity,Ej01Activity::class.java)
             startActivity(intent)
         }
-
-
-
-
-
         boton2.setOnClickListener {
             val intent= Intent(this@MainActivity,Ej02Activity::class.java)
             startActivity(intent)
         }
-        /*
+
         boton3.setOnClickListener {
             val intent= Intent(this@MainActivity,Ej03Activity::class.java)
             startActivity(intent)
         }
-*/
+
     }
 }
