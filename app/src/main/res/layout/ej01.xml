@@ -39,7 +39,7 @@
         app:layout_constraintBottom_toTopOf="@id/tres">
 
         <TextView
-            android:id="@+id/contador"
+            android:id="@+id/cuenta_atras"
             android:text="10"
             android:textSize="100sp"
             android:textColor="#673AB7"
